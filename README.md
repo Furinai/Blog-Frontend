@@ -1,4 +1,4 @@
-# blog-vue
+# Blog-Frontend
 
 ## Project setup
 ```
