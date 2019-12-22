@@ -2,13 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-//import ElementUI from 'element-ui'
-//import 'element-ui/lib/theme-chalk/index.css'
-//Vue.use(ElementUI);
-
+import './styles/index.css'
 import {
     Pagination,
-    //Dialog,
+    Dialog,
     //Autocomplete,
     //Dropdown,
     //DropdownMenu,
@@ -81,17 +78,17 @@ import {
     //Calendar,
     //Backtop,
     //PageHeader,
-    Avatar,
-    //Loading,
-    //Message,
+    //Avatar,
+    Loading,
+    Message,
     MessageBox,
     //Notification,
     //InfiniteScroll
-    //Drawer
+    Drawer
 } from 'element-ui';
 
 Vue.use(Pagination);
-//Vue.use(Dialog);
+Vue.use(Dialog);
 //Vue.use(Autocomplete);
 //Vue.use(Dropdown);
 //Vue.use(DropdownMenu);
@@ -164,20 +161,20 @@ Vue.use(Image);
 //Vue.use(Calendar);
 //Vue.use(Backtop);
 //Vue.use(PageHeader);
-Vue.use(Avatar);
+//Vue.use(Avatar);
 //Vue.use(InfiniteScroll);
-//Vue.use(Drawer);
-//Vue.use(Loading.directive);
+Vue.use(Drawer);
+Vue.use(Loading.directive);
 //Vue.prototype.$loading = Loading.service;
-Vue.prototype.$msgbox = MessageBox;
+//Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
-//Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$confirm = MessageBox.confirm;
 //Vue.prototype.$prompt = MessageBox.prompt;
 //Vue.prototype.$notify = Notification;
-//Vue.prototype.$message = Message;
+Vue.prototype.$message = Message;
 
 new Vue({
     store,
     router,
-    render: h => h(App),
+    render: h => h(App)
 }).$mount('#app')

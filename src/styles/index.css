@@ -1,0 +1,60 @@
+@import './normalize.css';
+
+html, body {
+    font-family: Arial, Helvetica, "Microsoft YaHei";
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #409EFF;
+    text-decoration: none;
+}
+
+i {
+    margin-right: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .hidden-xs-only {
+        display: none !important
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .hidden-sm-only {
+        display: none !important
+    }
+}
+
+.media{
+    display: flex;
+}
+
+.media-body{
+    flex: 1;
+    margin-left: 20px;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.el-dialog {
+    max-width: 360px;
+    border-radius: 5px;
+}
+
+.el-message-box {
+    width: 360px;
+}

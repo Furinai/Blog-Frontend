@@ -1,12 +1,9 @@
 <template>
-    <div id="category">
-        <Articles></Articles>
-    </div>
+    <Articles/>
 </template>
 
 <script>
-
-    import Articles from "./Articles";
+    import Articles from "../components/Articles";
 
     export default {
         name: 'Category',
@@ -17,5 +14,4 @@
 </script>
 
 <style scoped>
-
 </style>
