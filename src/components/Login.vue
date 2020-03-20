@@ -71,7 +71,7 @@
                             this.load = false
                             if (response && response.status == 'success') {
                                 getAuth().then(response => {
-                                    setAuth(JSON.stringify(response.object))
+                                    setAuth(response.object)
                                 })
                                 this.$emit('update:LoginDialog', false)
                                 this.$message.success(response.message)
