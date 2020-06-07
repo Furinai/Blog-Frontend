@@ -3,10 +3,10 @@
 </template>
 
 <script>
-    import Articles from '../components/Articles';
+    import Articles from "../components/Articles";
 
     export default {
-        name: 'Index',
+        name: "Index",
         components: {
             Articles,
         }

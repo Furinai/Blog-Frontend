@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
-import store from './store'
-import router from './router'
-import './styles/index.css'
+import Vue from "vue";
+import App from "./App.vue";
+import store from "./store";
+import router from "./router";
+import "./styles/index.css";
 import {
     Pagination,
     Dialog,
@@ -85,7 +85,7 @@ import {
     //Notification,
     //InfiniteScroll
     Drawer
-} from 'element-ui';
+} from "element-ui";
 
 Vue.use(Pagination);
 Vue.use(Dialog);
@@ -177,4 +177,4 @@ new Vue({
     store,
     router,
     render: h => h(App)
-}).$mount('#app')
+}).$mount("#app")

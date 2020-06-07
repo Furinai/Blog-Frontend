@@ -16,10 +16,10 @@
 <script>
     import Comments from "../components/Comments";
     import {getArticle} from "../utils/api";
-    import Prism from 'prismjs'
+    import Prism from "prismjs";
 
     export default {
-        name: 'Article',
+        name: "Article",
         data() {
             return {
                 article: {category: {}},
@@ -30,7 +30,7 @@
             Comments,
         },
         created() {
-            this.getArticle(this.articleId);
+            this.getArticle(this.articleId)
         },
         updated() {
             Prism.highlightAll()
@@ -38,9 +38,9 @@
         methods: {
             getArticle(articleId) {
                 getArticle(articleId).then(response => {
-                    if (response && response.status == 'success') {
+                    if (response && response.status == "success") {
                         this.article = response.object
-                        document.title = this.article.title + ' | 文章 | Linter'
+                        document.title = this.article.title + " | 文章 | Linter"
                     }
                 });
             }

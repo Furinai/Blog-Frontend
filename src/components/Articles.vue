@@ -2,7 +2,7 @@
     <div class="articles">
         <ul>
             <li class="article" v-for="article in articles" :key="article.id">
-                <router-link :to="{ name: 'article', params:{ id: article.id}}">
+                <router-link :to="{ name: 'article', params: { id: article.id}}">
                     <div class="title">{{ article.title }}</div>
                 </router-link>
                 <div class="synopsis">{{ article.synopsis }}</div>
@@ -26,7 +26,7 @@
     import {getArticles} from "../utils/api";
 
     export default {
-        name: 'Articles',
+        name: "Articles",
         data() {
             return {
                 total: 0,
@@ -35,19 +35,19 @@
             }
         },
         created() {
-            this.getArticles(this.categoryId);
+            this.getArticles(this.categoryId)
         },
         methods: {
             getArticles(categoryId, pageNumber) {
                 getArticles({categoryId, pageNumber}).then(response => {
-                    if (response && response.status == 'success') {
+                    if (response && response.status == "success") {
                         this.total = response.total
                         this.articles = response.object
                     }
                 });
             },
             handleCurrentChange(pageNumber) {
-                this.getArticles(this.categoryId, pageNumber);
+                this.getArticles(this.categoryId, pageNumber)
             }
         }
     }

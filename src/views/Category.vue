@@ -6,7 +6,7 @@
     import Articles from "../components/Articles";
 
     export default {
-        name: 'Category',
+        name: "Category",
         components: {
             Articles
         }

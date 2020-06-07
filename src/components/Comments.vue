@@ -36,44 +36,44 @@
 
 <script>
     import {addComment, getComments} from "../utils/api";
-    import {mapState} from 'vuex'
+    import {mapState} from "vuex";
 
     export default {
         name: "Comments",
         data() {
             return {
                 comments: {},
-                content: '',
+                content: "",
                 total: 0,
                 load: false,
                 articleId: this.$route.params.id
             }
         },
         created() {
-            this.getComments(this.articleId);
+            this.getComments(this.articleId)
         },
         computed: mapState([
-            'auth'
+            "auth"
         ]),
         methods: {
             getComments(articleId, pageNumber) {
                 getComments({articleId, pageNumber}).then(response => {
-                    if (response && response.status == 'success') {
+                    if (response && response.status == "success") {
                         this.total = response.total
                         this.comments = response.object
                     }
-                });
+                })
             },
             addComment(articleId, content) {
                 this.load = true
                 addComment({articleId, content}).then(response => {
                     this.load = false
-                    if (response && response.status == 'success') {
+                    if (response && response.status == "success") {
                         this.content = null
                         this.getComments(this.articleId)
                         this.$message.success(response.message)
                     }
-                });
+                })
             },
             onSubmit() {
                 if (this.content === null || this.content.length < 5) {
@@ -83,7 +83,7 @@
                 }
             },
             handleCurrentChange(pageNumber) {
-                this.getComments(this.articleId, pageNumber);
+                this.getComments(this.articleId, pageNumber)
             }
         }
     }

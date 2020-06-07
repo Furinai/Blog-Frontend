@@ -19,7 +19,7 @@
     import {getCategories} from "../utils/api";
 
     export default {
-        name: 'Categories',
+        name: "Categories",
         data() {
             return {
                 total: null,

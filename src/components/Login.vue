@@ -27,32 +27,32 @@
 </template>
 
 <script>
-    import qs from 'qs'
-    import {getAuth, login} from '../utils/api';
-    import {setAuth} from '../utils/auth';
+    import qs from "qs";
+    import {getAuth, login} from "../utils/api";
+    import {setAuth} from "../utils/auth";
 
     export default {
-        name: 'Login',
+        name: "Login",
         data() {
             return {
                 forms: {
-                    username: '',
-                    password: '',
+                    username: "",
+                    password: "",
                     remember: false
                 },
                 rules: {
                     username: [
                         {
                             required: true,
-                            message: '请输入用户名',
-                            trigger: 'blur'
+                            message: "请输入用户名",
+                            trigger: "blur"
                         }
                     ],
                     password: [
                         {
                             required: true,
-                            message: '请输入密码',
-                            trigger: 'blur'
+                            message: "请输入密码",
+                            trigger: "blur"
                         }
                     ]
                 },
@@ -60,7 +60,7 @@
             }
         },
         props: [
-            'LoginDialog'
+            "LoginDialog"
         ],
         methods: {
             onSubmit(forms) {
@@ -69,11 +69,11 @@
                         this.load = true
                         login(qs.stringify(forms)).then(response => {
                             this.load = false
-                            if (response && response.status == 'success') {
+                            if (response && response.status == "success") {
                                 getAuth().then(response => {
                                     setAuth(response.object)
                                 })
-                                this.$emit('update:LoginDialog', false)
+                                this.$emit("update:LoginDialog", false)
                                 this.$message.success(response.message)
                             }
                         })

@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import {initAuth} from '../utils/auth';
+import Vue from "vue";
+import Vuex from "vuex";
+import {initAuth} from "../utils/auth";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
@@ -18,10 +18,10 @@ export default new Vuex.Store({
     },
     actions: {
         setAuth(context, auth) {
-            context.commit('setAuth', auth)
+            context.commit("setAuth", auth);
         },
         removeAuth(context) {
-            context.commit('removeAuth')
+            context.commit("removeAuth");
         }
     }
-})
+});
