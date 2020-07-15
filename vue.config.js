@@ -2,6 +2,9 @@ module.exports = {
     outputDir: "dist",
     filenameHashing: false,
     productionSourceMap: false,
-    devServer: {proxy: "http://localhost"},
+    devServer: {
+        port: 80,
+        proxy: "http://localhost:8080"
+    },
     configureWebpack: {performance: {hints: false}}
 };
