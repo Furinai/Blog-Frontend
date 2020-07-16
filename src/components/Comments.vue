@@ -5,7 +5,7 @@
             <li class="comment" v-for="(comment) in comments" :key="comment.id">
                 <div class="media">
                     <div class="username">{{ comment.user.username }}</div>
-                    <div class="time">{{ comment.createTime }}</div>
+                    <div class="time">{{ comment.createdTime }}</div>
                 </div>
                 <div class="content" v-html="comment.content"></div>
             </li>
@@ -60,7 +60,7 @@
                 getComments({articleId, pageNumber}).then(response => {
                     if (response && response.status == "success") {
                         this.total = response.total
-                        this.comments = response.object
+                        this.comments = response.data
                     }
                 })
             },

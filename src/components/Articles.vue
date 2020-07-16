@@ -7,7 +7,7 @@
                 </router-link>
                 <div class="synopsis">{{ article.synopsis }}</div>
                 <ul class="info">
-                    <li class="time"><i class="el-icon-time"/>{{ article.createTime }}</li>
+                    <li class="time"><i class="el-icon-time"/>{{ article.createdTime }}</li>
                     <li class="view"><i class="el-icon-view"/>{{ article.viewCount }}</li>
                     <li class="comment"><i class="el-icon-chat-square"/>{{ article.commentCount }}</li>
                     <li class="category"><i class="el-icon-collection-tag"/>{{ article.category.name }}</li>
@@ -42,7 +42,7 @@
                 getArticles({categoryId, pageNumber}).then(response => {
                     if (response && response.status == "success") {
                         this.total = response.total
-                        this.articles = response.object
+                        this.articles = response.data
                     }
                 });
             },

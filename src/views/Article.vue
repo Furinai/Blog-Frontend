@@ -2,7 +2,7 @@
     <div v-if="article">
         <div class="title">{{ article.title }}</div>
         <ul class="info">
-            <li><i class="el-icon-time"/>{{ article.createTime }}</li>
+            <li><i class="el-icon-time"/>{{ article.createdTime }}</li>
             <li><i class="el-icon-view"/>{{ article.viewCount }}</li>
             <li><i class="el-icon-chat-square"/>{{ article.commentCount }}</li>
             <li><i class="el-icon-collection-tag"/>{{ article.category.name }}</li>
@@ -39,7 +39,7 @@
             getArticle(articleId) {
                 getArticle(articleId).then(response => {
                     if (response && response.status == "success") {
-                        this.article = response.object
+                        this.article = response.data
                         document.title = this.article.title + " | 文章 | Linter"
                     }
                 });

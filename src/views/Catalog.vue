@@ -34,7 +34,7 @@
                 getCategories().then(response => {
                     if (response && response.status == "success") {
                         this.total = response.total
-                        this.categories = response.object
+                        this.categories = response.data
                     }
                 });
             }
