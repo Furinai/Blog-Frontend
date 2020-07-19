@@ -1,0 +1,28 @@
+{
+    "name": "blog-nuxt",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "export": "nuxt export",
+        "serve": "nuxt serve"
+    },
+    "dependencies": {
+        "@nuxtjs/auth": "^4.9.1",
+        "@nuxtjs/axios": "^5.12.0",
+        "@nuxtjs/proxy": "^2.0.1",
+        "@tinymce/tinymce-vue": "^3.2.2",
+        "element-ui": "^2.13.2",
+        "nuxt": "^2.13.0",
+        "prismjs": "^1.20.0",
+        "qs": "^6.9.4",
+        "tinymce": "^5.4.1"
+    },
+    "devDependencies": {
+        "babel-plugin-component": "^1.1.1",
+        "babel-plugin-prismjs": "^1.1.1",
+        "babel-preset-env": "^1.7.0"
+    }
+}
