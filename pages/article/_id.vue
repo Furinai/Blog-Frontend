@@ -77,7 +77,7 @@
         async asyncData({app, params, query}) {
             let article = await app.$axios.get('article/' + params.id)
             let url = 'comments?articleId=' + params.id
-            if (query.page != undefined)
+            if (query.page !== undefined)
                 url = url + '&pageNum=' + query.page
             let comments = await app.$axios.get(url)
             return {
@@ -101,6 +101,7 @@
                         this.load = false
                         if (response && response.status === "success") {
                             this.content = null
+                            this.comments = response.data
                             this.$message.success(response.message)
                         }
                     })
