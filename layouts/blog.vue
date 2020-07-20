@@ -21,7 +21,7 @@
     import Footer from '~/components/Footer';
 
     export default {
-        name: 'Blog',
+        name: 'blog',
         components: {
             Header,
             Footer

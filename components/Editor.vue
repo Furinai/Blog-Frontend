@@ -33,7 +33,7 @@
                     height: 350,
                     branding: false,
                     language: 'zh_CN',
-                    base_url: 'tinymce',
+                    base_url: '/tinymce',
                     convert_urls: false,
                     images_upload_url: 'api/image',
                     link_assume_external_targets: 'http',
