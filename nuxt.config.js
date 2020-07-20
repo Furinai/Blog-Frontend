@@ -3,7 +3,7 @@ export default {
     target: 'server',
     head: {
         title: 'Linter',
-        titleTemplate:'%s | Linter',
+        titleTemplate: '%s | Linter',
         htmlAttrs: {
             lang: 'zh-Hans-CN',
         },
@@ -72,10 +72,12 @@ export default {
         strategies: {
             local: {
                 endpoints: {
-                    login: {url: 'login', method: 'post', propertyName: 'token'},
-                    user: {url: 'auth', method: 'get', propertyName: 'user'},
-                    logout: {url: 'logout', method: 'get'},
+                    login: {url: 'login', method: 'post', propertyName: false},
+                    user: {url: 'auth', method: 'get', propertyName: false},
+                    logout: {url: 'logout', method: 'get'}
                 },
+                tokenRequired: false,
+                tokenType: false
             }
         }
     },
