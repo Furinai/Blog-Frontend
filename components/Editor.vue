@@ -35,8 +35,9 @@
                     language: 'zh_CN',
                     base_url: '/tinymce',
                     convert_urls: false,
-                    images_upload_url: 'api/image',
+                    image_description: false,
                     link_assume_external_targets: 'http',
+                    images_upload_handler: this.uploadImage,
                     plugins: 'codesample table image media code link',
                     toolbar: 'undo redo | code codesample | forecolor backcolor | link image',
                     codesample_languages: [
@@ -59,6 +60,27 @@
             },
             content(newContent) {
                 this.$emit('input', newContent)
+            }
+        },
+        methods: {
+            uploadImage(blobInfo, success, failure, progress) {
+                let formData = new FormData();
+                formData.append('file', blobInfo.blob(), blobInfo.filename());
+                this.$axios.post('admin/image', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        onUploadProgress: event => {
+                            progress(event.loaded / event.total * 100);
+                        }
+                    }
+                ).then(response => {
+                    if (response && response.status === 'success') {
+                        success(response.data)
+                    } else {
+                        failure(response.message)
+                    }
+                })
             }
         }
     }
