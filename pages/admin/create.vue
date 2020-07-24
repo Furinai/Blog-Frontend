@@ -32,7 +32,7 @@
         components: {
             Editor
         },
-        layout: 'blog',
+        layout: 'admin',
         head() {
             return {
                 title: '发布'
@@ -79,7 +79,7 @@
                 this.$refs[forms].validate((valid) => {
                     if (valid) {
                         this.load = true
-                        this.$axios.post('article', {data: forms}).then(response => {
+                        this.$axios.post('article', forms).then(response => {
                             this.load = false
                             if (response && response.status === 'success') {
                                 this.$message.success(response.message)
