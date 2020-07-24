@@ -36,7 +36,7 @@
         async asyncData({app, params, query}) {
             let category = await app.$axios.get('category/' + params.id)
             let url = 'articles?categoryId=' + params.id
-            if (query.page != undefined)
+            if (query.page !== undefined)
                 url = url + '&pageNum=' + query.page
             let articles = await app.$axios.get(url)
             return {

@@ -3,7 +3,7 @@
         <div class="el-pagination is-background">
             <ul class="el-pager">
                 <li class="number">
-                    <i v-if="pageNum == 1" class="el-icon el-icon-arrow-left"></i>
+                    <i v-if="pageNum === 1" class="el-icon el-icon-arrow-left"></i>
                     <nuxt-link v-else :to="{...route, query: {page: prePage}}">
                         <i class="el-icon el-icon-arrow-left"></i>
                     </nuxt-link>
