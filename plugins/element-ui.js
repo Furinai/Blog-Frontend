@@ -6,9 +6,9 @@ import {
     //Dropdown,
     //DropdownMenu,
     //DropdownItem,
-    //Menu,
-    //Submenu,
-    //MenuItem,
+    Menu,
+    Submenu,
+    MenuItem,
     //MenuItemGroup,
     Input,
     //InputNumber,
@@ -63,7 +63,7 @@ import {
     //Transfer,
     Container,
     Header,
-    //Aside,
+    Aside,
     Main,
     Footer,
     //Timeline,
@@ -89,9 +89,9 @@ Vue.use(Dialog);
 //Vue.use(Dropdown);
 //Vue.use(DropdownMenu);
 //Vue.use(DropdownItem);
-//Vue.use(Menu);
-//Vue.use(Submenu);
-//Vue.use(MenuItem);
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
 //Vue.use(MenuItemGroup);
 Vue.use(Input);
 //Vue.use(InputNumber);
@@ -146,7 +146,7 @@ Vue.use(Card);
 //Vue.use(Transfer);
 Vue.use(Container);
 Vue.use(Header);
-//Vue.use(Aside);
+Vue.use(Aside);
 Vue.use(Main);
 Vue.use(Footer);
 //Vue.use(Timeline);
