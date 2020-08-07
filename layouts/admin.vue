@@ -5,7 +5,11 @@
         </el-aside>
         <el-container>
             <el-header height="50px">
-                <Header/>
+                <ul class="nav-list">
+                    <li class="nav">
+                        欢迎，{{ this.$auth.user.username }}
+                    </li>
+                </ul>
             </el-header>
             <el-main>
                 <nuxt/>
@@ -15,28 +19,37 @@
 </template>
 
 <script>
-    import Header from '~/components/admin/Header';
-    import Aside from "../components/admin/Aside";
+import Aside from "~/components/Aside";
 
-    export default {
-        name: 'admin',
-        components: {
-            Header,
-            Aside
-        },
-        middleware: 'auth'
-    }
+export default {
+    name: 'admin',
+    components: {
+        Aside
+    },
+    middleware: 'auth'
+}
 </script>
 
 <style scoped>
-    .el-header {
-        box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
-        border-bottom: 1px solid #eee;
-        line-height: 50px;
-        width: 100%;
-    }
+.nav {
+    margin-left: 10px;
+}
 
-    .el-container {
-        height: 100%;
-    }
+.nav-list {
+    margin-left: auto;
+    display: flex;
+}
+
+.el-header {
+    box-shadow: 0 1px 3px rgba(26, 26, 26, .1);
+    border-bottom: 1px solid #eee;
+    line-height: 50px;
+    display: flex;
+    margin: auto;
+    width: 100%;
+}
+
+.el-container {
+    height: 100%;
+}
 </style>

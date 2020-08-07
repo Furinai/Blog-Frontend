@@ -11,10 +11,10 @@
                     <i class="el-icon-document"></i>
                     <span>文章</span>
                 </template>
-                <el-menu-item index="2-1" :route="{name: 'admin-create'}">
+                <el-menu-item index="2-1" :route="{name: 'admin-article-new'}">
                     发表文章
                 </el-menu-item>
-                <el-menu-item index="2-2" :route="{name: ''}">
+                <el-menu-item index="2-2" :route="{name: 'admin-article-list'}">
                     文章管理
                 </el-menu-item>
             </el-submenu>
@@ -68,17 +68,17 @@
 </template>
 
 <script>
-    export default {
-        name: "Aside"
-    }
+export default {
+    name: "Aside"
+}
 </script>
 
 <style scoped>
-    .aside {
-        height: 100%;
-    }
+.aside {
+    height: 100%;
+}
 
-    .el-menu {
-        height: 100%;
-    }
+.el-menu {
+    height: 100%;
+}
 </style>
