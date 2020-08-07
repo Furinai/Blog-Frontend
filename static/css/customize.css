@@ -50,6 +50,10 @@ ul {
     margin-left: 20px;
 }
 
+.pagination{
+    margin-top: 20px;
+}
+
 .el-dialog {
     max-width: 360px;
     border-radius: 5px;
