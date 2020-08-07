@@ -28,7 +28,7 @@
     import Editor from '~/components/Editor';
 
     export default {
-        name: 'create',
+        name: 'article-new',
         components: {
             Editor
         },
