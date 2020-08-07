@@ -50,8 +50,17 @@ ul {
     margin-left: 20px;
 }
 
-.pagination{
+.menu {
+    display: flex;
     margin-top: 20px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.menu > .el-pagination {
+    margin-right: auto;
 }
 
 .el-dialog {

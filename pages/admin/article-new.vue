@@ -35,7 +35,7 @@ export default {
     layout: 'admin',
     head() {
         return {
-            title: '发布'
+            title: '发布文章'
         }
     },
     data() {
@@ -67,7 +67,7 @@ export default {
                 ]
             },
             categories: [],
-            load: false,
+            load: false
         }
     },
     async asyncData({app}) {
