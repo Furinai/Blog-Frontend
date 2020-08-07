@@ -66,7 +66,7 @@
             uploadImage(blobInfo, success, failure, progress) {
                 let formData = new FormData();
                 formData.append('file', blobInfo.blob(), blobInfo.filename());
-                this.$axios.post('admin/image', formData, {
+                this.$axios.post('image', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         },
