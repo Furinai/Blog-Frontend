@@ -25,23 +25,23 @@
 </template>
 
 <script>
-    export default {
-        name: 'about',
-        layout: 'blog',
-        head() {
-            return {
-                title: '关于'
-            }
+export default {
+    name: 'about',
+    layout: 'blog',
+    head() {
+        return {
+            title: '关于'
         }
     }
+}
 </script>
 
 <style scoped>
-    .about > li {
-        margin-bottom: 20px;
-    }
+.about > li {
+    margin-bottom: 20px;
+}
 
-    .el-tag {
-        margin: 5px;
-    }
+.el-tag {
+    margin: 5px;
+}
 </style>

@@ -8,31 +8,31 @@
 </template>
 
 <script>
-    import Login from '~/components/Login';
+import Login from '~/components/Login';
 
-    export default {
-        name: 'login',
-        layout: 'blog',
-        components: {
-            Login
-        }
+export default {
+    name: 'login',
+    layout: 'blog',
+    components: {
+        Login
     }
+}
 </script>
 <style scoped>
-    .el-card {
-        max-width: 360px;
-        border-radius: 10px;
-        margin: 6.25rem auto auto;
-        padding: 0.625rem 0.625rem 0;
-    }
+.el-card {
+    max-width: 360px;
+    border-radius: 10px;
+    margin: 6.25rem auto auto;
+    padding: 0.625rem 0.625rem 0;
+}
 
-    .el-button {
-        width: 100%;
-    }
+.el-button {
+    width: 100%;
+}
 
-    .title {
-        font-weight: 600;
-        text-align: center;
-        font-size: 1.125rem;
-    }
+.title {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.125rem;
+}
 </style>

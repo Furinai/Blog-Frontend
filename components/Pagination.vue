@@ -15,13 +15,13 @@
                 <li v-for="currentPage in pageNums" class="number"
                     :class="{active: currentPage === pageNum}">
                     <nuxt-link :to="{...route, query: {page: currentPage}}">
-                        {{currentPage}}
+                        {{ currentPage }}
                     </nuxt-link>
                 </li>
                 <li v-if="navigateLastPage < pages - 1" class="el-icon el-icon-more"></li>
                 <li v-if="navigateLastPage < pages" class="number">
                     <nuxt-link :to="{...route, query: {page: pages}}">
-                        {{pages}}
+                        {{ pages }}
                     </nuxt-link>
                 </li>
                 <li class="number">
@@ -36,53 +36,53 @@
 </template>
 
 <script>
-    export default {
-        name: 'Pagination',
-        props: {
-            navigateFirstPage: 0,
-            navigateLastPage: 0,
-            navigatepageNums: '',
-            pageNum: 0,
-            prePage: 0,
-            nextPage: 0,
-            pages: 0,
-            route: {}
-        },
-        computed: {
-            pageNums() {
-                if (this.navigateFirstPage > 2) {
-                    if (this.navigateLastPage < this.pages - 1) {
-                        return this.navigatepageNums.slice(1, 4)
-                    } else {
-                        return this.navigatepageNums.slice(1)
-                    }
+export default {
+    name: 'Pagination',
+    props: {
+        navigateFirstPage: 0,
+        navigateLastPage: 0,
+        navigatepageNums: '',
+        pageNum: 0,
+        prePage: 0,
+        nextPage: 0,
+        pages: 0,
+        route: {}
+    },
+    computed: {
+        pageNums() {
+            if (this.navigateFirstPage > 2) {
+                if (this.navigateLastPage < this.pages - 1) {
+                    return this.navigatepageNums.slice(1, 4)
                 } else {
-                    return this.navigatepageNums;
+                    return this.navigatepageNums.slice(1)
                 }
+            } else {
+                return this.navigatepageNums;
             }
         }
     }
+}
 </script>
 
 <style scoped>
-    .pagination {
-        margin-top: 10px;
-        text-align: center;
-    }
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
 
-    .number i {
-        margin-right: 0;
-    }
+.number i {
+    margin-right: 0;
+}
 
-    .el-pagination {
-        padding: 0;
-    }
+.el-pagination {
+    padding: 0;
+}
 
-    .el-pagination li.active {
-        background-color: #409EFF;
-    }
+.el-pagination li.active {
+    background-color: #409EFF;
+}
 
-    .el-pagination li.active a {
-        color: #ffffff;
-    }
+.el-pagination li.active a {
+    color: #ffffff;
+}
 </style>

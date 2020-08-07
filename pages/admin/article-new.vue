@@ -25,75 +25,75 @@
 </template>
 
 <script>
-    import Editor from '~/components/Editor';
+import Editor from '~/components/Editor';
 
-    export default {
-        name: 'article-new',
-        components: {
-            Editor
-        },
-        layout: 'admin',
-        head() {
-            return {
-                title: '发布'
-            }
-        },
-        data() {
-            return {
-                forms: {
-                    title: '',
-                    synopsis: '',
-                    content: '',
-                    category: '',
-                },
-                rules: {
-                    category: [
-                        {
-                            required: true,
-                            message: '请选择分类'
-                        }
-                    ],
-                    title: [
-                        {
-                            required: true,
-                            message: '请输入标题'
-                        }
-                    ],
-                    content: [
-                        {
-                            required: true,
-                            message: '请输入内容'
-                        }
-                    ]
-                },
-                categories: [],
-                load: false,
-            }
-        },
-        async asyncData({app}) {
-            let response = await app.$axios.get('categories')
-            return {categories: response.data};
-        },
-        methods: {
-            onSubmit(forms) {
-                this.$refs[forms].validate((valid) => {
-                    if (valid) {
-                        this.load = true
-                        this.$axios.post('article', forms).then(response => {
-                            this.load = false
-                            if (response && response.status === 'success') {
-                                this.$message.success(response.message)
-                            }
-                        });
+export default {
+    name: 'article-new',
+    components: {
+        Editor
+    },
+    layout: 'admin',
+    head() {
+        return {
+            title: '发布'
+        }
+    },
+    data() {
+        return {
+            forms: {
+                title: '',
+                synopsis: '',
+                content: '',
+                category: '',
+            },
+            rules: {
+                category: [
+                    {
+                        required: true,
+                        message: '请选择分类'
                     }
-                });
-            }
+                ],
+                title: [
+                    {
+                        required: true,
+                        message: '请输入标题'
+                    }
+                ],
+                content: [
+                    {
+                        required: true,
+                        message: '请输入内容'
+                    }
+                ]
+            },
+            categories: [],
+            load: false,
+        }
+    },
+    async asyncData({app}) {
+        let response = await app.$axios.get('categories')
+        return {categories: response.data};
+    },
+    methods: {
+        onSubmit(forms) {
+            this.$refs[forms].validate((valid) => {
+                if (valid) {
+                    this.load = true
+                    this.$axios.post('article', forms).then(response => {
+                        this.load = false
+                        if (response && response.status === 'success') {
+                            this.$message.success(response.message)
+                        }
+                    });
+                }
+            });
         }
     }
+}
 </script>
 
 <style scoped>
-    .el-button {
-        float: right;
-    }
+.el-button {
+    float: right;
+}
 </style>

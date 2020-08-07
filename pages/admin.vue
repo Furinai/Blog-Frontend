@@ -3,8 +3,8 @@
 </template>
 
 <script>
-    export default {
-        name: "admin",
-        layout: 'admin'
-    }
+export default {
+    name: "admin",
+    layout: 'admin'
+}
 </script>

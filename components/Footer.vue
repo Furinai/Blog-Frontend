@@ -10,24 +10,24 @@
 </template>
 
 <script>
-    export default {
-        name: 'Footer'
-    }
+export default {
+    name: 'Footer'
+}
 </script>
 
 <style scoped>
-    .footer {
-        text-align: center;
-        padding-top: 20px;
-        line-height: 1.5;
-    }
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    line-height: 1.5;
+}
 
-    .copyright {
-        font-size: 14px;
-        color: #444;
-    }
+.copyright {
+    font-size: 14px;
+    color: #444;
+}
 
-    .el-link {
-        font-size: 14px;
-    }
+.el-link {
+    font-size: 14px;
+}
 </style>

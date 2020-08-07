@@ -12,40 +12,40 @@
 </template>
 
 <script>
-    import Articles from '~/components/Articles';
-    import Pagination from '~/components/Pagination';
+import Articles from '~/components/Articles';
+import Pagination from '~/components/Pagination';
 
-    export default {
-        name: 'blog-category',
-        layout: 'blog',
-        components: {
-            Articles,
-            Pagination
-        },
-        data() {
-            return {
-                category: {},
-                articles: {}
-            }
-        },
-        head() {
-            return {
-                title: this.category.name + ' | 分类'
-            }
-        },
-        async asyncData({app, params, query}) {
-            let category = await app.$axios.get('category/' + params.id)
-            let url = 'articles?categoryId=' + params.id
-            if (query.page !== undefined)
-                url = url + '&pageNum=' + query.page
-            let articles = await app.$axios.get(url)
-            return {
-                category: category.data,
-                articles: articles.data
-            };
-        },
-        watchQuery: true
-    }
+export default {
+    name: 'blog-category',
+    layout: 'blog',
+    components: {
+        Articles,
+        Pagination
+    },
+    data() {
+        return {
+            category: {},
+            articles: {}
+        }
+    },
+    head() {
+        return {
+            title: this.category.name + ' | 分类'
+        }
+    },
+    async asyncData({app, params, query}) {
+        let category = await app.$axios.get('category/' + params.id)
+        let url = 'articles?categoryId=' + params.id
+        if (query.page !== undefined)
+            url = url + '&pageNum=' + query.page
+        let articles = await app.$axios.get(url)
+        return {
+            category: category.data,
+            articles: articles.data
+        };
+    },
+    watchQuery: true
+}
 </script>
 
 <style scoped>

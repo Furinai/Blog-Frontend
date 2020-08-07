@@ -17,44 +17,44 @@
 </template>
 
 <script>
-    import Header from '~/components/Header';
-    import Footer from '~/components/Footer';
+import Header from '~/components/Header';
+import Footer from '~/components/Footer';
 
-    export default {
-        name: 'blog',
-        components: {
-            Header,
-            Footer
-        },
-        head() {
-            return {
-                meta: [
-                    {name: 'viewport', content: 'width=device-width, initial-scale=1'}
-                ]
-            }
+export default {
+    name: 'blog',
+    components: {
+        Header,
+        Footer
+    },
+    head() {
+        return {
+            meta: [
+                {name: 'viewport', content: 'width=device-width, initial-scale=1'}
+            ]
         }
     }
+}
 </script>
 
 <style scoped>
-    .el-header {
-        border-bottom: 1px solid #eee;
-        background-color: #fff;
-        line-height: 50px;
-        position: fixed;
-        z-index: 1020;
-        width: 100%;
-    }
+.el-header {
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    line-height: 50px;
+    position: fixed;
+    z-index: 1020;
+    width: 100%;
+}
 
-    .el-main {
-        margin-top: 50px;
-    }
+.el-main {
+    margin-top: 50px;
+}
 
-    .el-footer {
-        border-top: 1px solid #eee;
-    }
+.el-footer {
+    border-top: 1px solid #eee;
+}
 
-    .el-container {
-        min-height: 100%;
-    }
+.el-container {
+    min-height: 100%;
+}
 </style>

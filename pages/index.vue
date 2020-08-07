@@ -12,35 +12,35 @@
 </template>
 
 <script>
-    import Articles from '~/components/Articles';
-    import Pagination from '~/components/Pagination';
+import Articles from '~/components/Articles';
+import Pagination from '~/components/Pagination';
 
-    export default {
-        name: 'index',
-        layout: 'blog',
-        components: {
-            Articles,
-            Pagination
-        },
-        head() {
-            return {
-                title: '首页'
-            }
-        },
-        data() {
-            return {
-                articles: {}
-            }
-        },
-        watchQuery: true,
-        async asyncData({app, query}) {
-            let url = 'articles'
-            if (query.page !== undefined)
-                url = url + '?pageNum=' + query.page
-            let response = await app.$axios.get(url)
-            return {articles: response.data};
+export default {
+    name: 'index',
+    layout: 'blog',
+    components: {
+        Articles,
+        Pagination
+    },
+    head() {
+        return {
+            title: '首页'
         }
+    },
+    data() {
+        return {
+            articles: {}
+        }
+    },
+    watchQuery: true,
+    async asyncData({app, query}) {
+        let url = 'articles'
+        if (query.page !== undefined)
+            url = url + '?pageNum=' + query.page
+        let response = await app.$axios.get(url)
+        return {articles: response.data};
     }
+}
 </script>
 
 <style scoped>

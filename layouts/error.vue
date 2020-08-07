@@ -5,10 +5,10 @@
 </template>
 
 <script>
-    import NotFound from '~/components/NotFound';
+import NotFound from '~/components/NotFound';
 
-    export default {
-        components: {NotFound},
-        props: ['error']
-    }
+export default {
+    components: {NotFound},
+    props: ['error']
+}
 </script>
