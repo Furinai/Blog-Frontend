@@ -23,10 +23,10 @@
                     <i class="el-icon-collection-tag"></i>
                     <span>分类</span>
                 </template>
-                <el-menu-item index="3-1" :route="{name: ''}">
+                <el-menu-item index="3-1" :route="{name: 'admin-category-new'}">
                     新增分类
                 </el-menu-item>
-                <el-menu-item index="3-2" :route="{name: ''}">
+                <el-menu-item index="3-2" :route="{name: 'admin-category-list'}">
                     分类管理
                 </el-menu-item>
             </el-submenu>
@@ -35,7 +35,7 @@
                     <i class="el-icon-chat-dot-square"></i>
                     <span>评论</span>
                 </template>
-                <el-menu-item index="4-1" :route="{name: ''}">
+                <el-menu-item index="4-1" :route="{name: 'admin-comment-list'}">
                     评论管理
                 </el-menu-item>
             </el-submenu>
@@ -44,23 +44,11 @@
                     <i class="el-icon-user"></i>
                     <span>用户</span>
                 </template>
-                <el-menu-item index="5-1" :route="{name: ''}">
+                <el-menu-item index="5-1" :route="{name: 'admin-user-new'}">
                     新增用户
                 </el-menu-item>
-                <el-menu-item index="5-2" :route="{name: ''}">
+                <el-menu-item index="5-2" :route="{name: 'admin-user-list'}">
                     用户管理
-                </el-menu-item>
-            </el-submenu>
-            <el-submenu index="6">
-                <template slot="title">
-                    <i class="el-icon-postcard"></i>
-                    <span>角色</span>
-                </template>
-                <el-menu-item index="6-1" :route="{name: ''}">
-                    新增角色
-                </el-menu-item>
-                <el-menu-item index="6-2" :route="{name: ''}">
-                    角色管理
                 </el-menu-item>
             </el-submenu>
         </el-menu>
