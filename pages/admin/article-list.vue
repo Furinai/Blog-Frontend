@@ -4,16 +4,20 @@
             <el-table :data="articles.list" ref="multipleTable" style="width: 100%"
                       @selection-change="handleSelectionChange" border>
                 <el-table-column type="selection" align="center" width="50"/>
-                <el-table-column prop="id" label="ID" align="center" width="150"/>
+                <el-table-column prop="id" label="ID" align="center" width="100"/>
                 <el-table-column prop="title" label="标题" align="center"/>
-                <el-table-column prop="createdTime" label="创建时间" align="center" width="250"/>
-                <el-table-column prop="category.name" label="所属分类" align="center" width="200"/>
+                <el-table-column prop="createdTime" label="创建时间" align="center" width="200"/>
+                <el-table-column prop="category.name" label="所属分类" align="center" width="150"/>
                 <el-table-column prop="commentCount" label="评论数量" align="center" width="150"/>
+                <el-table-column label="操作" align="center" width="100px">
+                    <template slot-scope="scope">
+                        <el-button size="mini" @click="editArticle(scope.row)">编辑</el-button>
+                    </template>
+                </el-table-column>
             </el-table>
             <div class="menu">
-                <el-pagination background layout="prev, pager, next" :pager-count="5" :total="articles.total"
+                <el-pagination background layout="prev, pager, next" :pager-count="15" :total="articles.total"
                                @current-change="handlePageChange"/>
-                <el-button type="default" size="small" @click="editArticle" :disabled="disabled">编辑</el-button>
                 <el-button type="danger" size="mini" @click="deleteArticles" :disabled="disabled">删除</el-button>
             </div>
         </div>
@@ -37,9 +41,11 @@
                 <el-form-item prop="content">
                     <Editor v-model="article.content"/>
                 </el-form-item>
+                <el-form-item>
+                    <el-button size="small" @click="formVisible = false">取消</el-button>
+                    <el-button size="small" @click="onSubmit(article)" type="primary" :loading="load">确认</el-button>
+                </el-form-item>
             </el-form>
-            <el-button size="small" @click="formVisible = false">取消</el-button>
-            <el-button size="small" @click="onSubmit(article)" type="primary" :loading="load">确认</el-button>
         </div>
 
     </div>
@@ -63,6 +69,7 @@ export default {
             articles: {},
             categories: [],
             disabled: true,
+            currentPage: 0,
             formVisible: false,
             rules: {
                 category: [
@@ -112,13 +119,13 @@ export default {
                 }
             })
         },
-        editArticle() {
+        editArticle(row) {
             this.getCategories()
-            this.getArticle(this.$refs.multipleTable.selection[0].id)
+            this.getArticle(row.id)
             this.formVisible = true
         },
         deleteArticles() {
-            this.$confirm("永久删除这些文章, 是否继续?")
+            this.$confirm("此操作会永久删除这些文章及其评论, 是否继续?")
                 .then(() => {
                     const ids = [];
                     this.$refs.multipleTable.selection.forEach(item => {
@@ -126,8 +133,8 @@ export default {
                     })
                     this.$axios.delete('article', {data: ids}).then(response => {
                         if (response && response.status === "success") {
+                            this.getArticles(this.currentPage)
                             this.$message.success(response.message)
-                            this.getArticles()
                         }
                     })
                 })
@@ -139,7 +146,7 @@ export default {
                     this.$axios.put('article', article).then(response => {
                         this.load = false
                         if (response && response.status === 'success') {
-                            this.getArticles()
+                            this.getArticles(this.currentPage)
                             this.formVisible = false
                             this.$message.success(response.message)
                         }
@@ -148,6 +155,7 @@ export default {
             });
         },
         handlePageChange(pageNum) {
+            this.currentPage = pageNum
             this.getArticles(pageNum)
         },
         handleSelectionChange(selection) {
@@ -156,10 +164,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.el-button {
-    float: right;
-    margin-left: 10px;
-}
-</style>

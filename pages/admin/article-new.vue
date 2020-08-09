@@ -91,9 +91,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.el-button {
-    float: right;
-}
-</style>
