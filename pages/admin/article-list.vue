@@ -30,13 +30,11 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item prop="title">
-                    <el-input type="text" v-model="article.title" placeholder="标题" maxlength="60" show-word-limit>
-                    </el-input>
+                    <el-input type="text" v-model="article.title" placeholder="标题" maxlength="60" show-word-limit/>
                 </el-form-item>
                 <el-form-item>
                     <el-input type="textarea" v-model="article.synopsis" :autosize="{minRows: 3, maxRows: 6}"
-                              placeholder="摘要" minlength="10" maxlength="300" show-word-limit>
-                    </el-input>
+                              placeholder="摘要" minlength="10" maxlength="300" show-word-limit/>
                 </el-form-item>
                 <el-form-item prop="content">
                     <Editor v-model="article.content"/>
