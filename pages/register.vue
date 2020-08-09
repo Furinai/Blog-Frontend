@@ -3,20 +3,20 @@
         <div slot="header">
             <div class="title">注册</div>
         </div>
-        <el-form :model="forms" :rules="rules" :ref="forms">
+        <el-form :model="user" :rules="rules" :ref="user">
             <el-form-item prop="email">
-                <el-input type="email" v-model="forms.email" placeholder="邮箱"/>
+                <el-input type="email" v-model="user.email" placeholder="邮箱"/>
             </el-form-item>
             <el-form-item prop="username">
-                <el-input type="text" v-model="forms.username" placeholder="用户名"/>
+                <el-input type="text" v-model="user.username" placeholder="用户名"/>
             </el-form-item>
             <el-form-item prop="password">
-                <el-input type="password" v-model="forms.password" placeholder="密码"
-                          @keyup.enter.native="onSubmit(forms)"/>
+                <el-input type="password" v-model="user.password" placeholder="密码"
+                          @keyup.enter.native="onSubmit(user)"/>
             </el-form-item>
             <el-form-item>
                 <el-button class="button-long" type="primary"
-                           @click="onSubmit(forms)" :loading="load" round>
+                           @click="onSubmit(user)" :loading="load" round>
                     注册
                 </el-button>
             </el-form-item>
@@ -35,7 +35,7 @@ export default {
     },
     data() {
         return {
-            forms: {
+            user: {
                 email: '',
                 username: '',
                 password: ''
@@ -75,11 +75,11 @@ export default {
         }
     },
     methods: {
-        onSubmit(forms) {
-            this.$refs[forms].validate((valid) => {
+        onSubmit(user) {
+            this.$refs[user].validate((valid) => {
                 if (valid) {
                     this.load = true
-                    this.$axios.post('register', forms).then(response => {
+                    this.$axios.post('register', user).then(response => {
                         this.load = false
                         if (response && response.status === 'success') {
                             this.$router.push({name: 'index'})
