@@ -165,8 +165,4 @@ img {
 .form {
     margin-top: 25px;
 }
-
-.el-button {
-    float: right;
-}
 </style>

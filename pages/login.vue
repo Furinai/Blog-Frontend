@@ -1,7 +1,7 @@
 <template>
     <el-card>
         <div slot="header">
-            <div class="title">注册</div>
+            <div class="title">登录</div>
         </div>
         <Login/>
     </el-card>
@@ -24,10 +24,6 @@ export default {
     border-radius: 10px;
     margin: 6.25rem auto auto;
     padding: 0.625rem 0.625rem 0;
-}
-
-.el-button {
-    width: 100%;
 }
 
 .title {

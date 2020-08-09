@@ -52,7 +52,8 @@ ul {
 
 .menu {
     display: flex;
-    margin-top: 20px;
+    margin: 20px auto;
+    justify-content: space-between;
 }
 
 .pagination {
@@ -63,6 +64,11 @@ ul {
     margin-right: auto;
 }
 
+.el-form-item .el-button {
+    float: right;
+    margin-left: 10px;
+}
+
 .el-dialog {
     max-width: 360px;
     border-radius: 5px;
@@ -70,4 +76,8 @@ ul {
 
 .el-message-box {
     width: 360px;
+}
+
+.button-long {
+    width: 100%;
 }

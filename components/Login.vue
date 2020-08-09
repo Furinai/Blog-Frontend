@@ -8,16 +8,19 @@
                 <el-input type="password" v-model="forms.password" placeholder="密码"
                           @keyup.enter.native="onSubmit(forms)"/>
             </el-form-item>
-            <el-checkbox v-model="forms.remember">保持登录</el-checkbox>
+            <div class="menu">
+                <el-checkbox v-model="forms.remember">保持登录</el-checkbox>
+                <nuxt-link class="el-link el-link--primary" :to="{name: 'register'}">
+                    注册账号
+                </nuxt-link>
+            </div>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit(forms)" :loading="load" round>登录</el-button>
+                <el-button class="button-long" type="primary"
+                           @click="onSubmit(forms)" :loading="load" round>
+                    登录
+                </el-button>
             </el-form-item>
         </el-form>
-        <span class="register">
-            <nuxt-link class="el-link el-link--primary" :to="{name: 'register'}">
-                注册账号
-            </nuxt-link>
-        </span>
     </div>
 </template>
 
@@ -71,17 +74,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.el-button {
-    width: 100%;
-}
-
-.el-checkbox {
-    margin-bottom: 15px;
-}
-
-.reset-password {
-    float: right;
-}
-</style>

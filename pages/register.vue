@@ -15,7 +15,10 @@
                           @keyup.enter.native="onSubmit(forms)"/>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit(forms)" :loading="load" round>注册</el-button>
+                <el-button class="button-long" type="primary"
+                           @click="onSubmit(forms)" :loading="load" round>
+                    注册
+                </el-button>
             </el-form-item>
         </el-form>
     </el-card>
@@ -96,10 +99,6 @@ export default {
     border-radius: 10px;
     margin: 6.25rem auto auto;
     padding: 0.625rem 0.625rem 0;
-}
-
-.el-button {
-    width: 100%;
 }
 
 .title {
