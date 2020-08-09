@@ -70,11 +70,17 @@ export default {
             load: false
         }
     },
-    async asyncData({app}) {
-        let response = await app.$axios.get('categories')
-        return {categories: response.data};
+    created() {
+        this.getCategories()
     },
     methods: {
+        getCategories() {
+            this.$axios.get('categories').then(response => {
+                if (response && response.status === "success") {
+                    this.categories = response.data
+                }
+            })
+        },
         onSubmit(forms) {
             this.$refs[forms].validate((valid) => {
                 if (valid) {
