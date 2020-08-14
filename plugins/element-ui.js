@@ -30,7 +30,7 @@ import {
     //TimeSelect,
     //TimePicker,
     //Popover,
-    //Tooltip,
+    Tooltip,
     //Breadcrumb,
     //BreadcrumbItem,
     Form,
@@ -44,7 +44,7 @@ import {
     Icon,
     Row,
     Col,
-    //Upload,
+    Upload,
     //Progress,
     //Spinner,
     //Badge,
@@ -113,7 +113,7 @@ Vue.use(TableColumn);
 //Vue.use(TimeSelect);
 //Vue.use(TimePicker);
 //Vue.use(Popover);
-//Vue.use(Tooltip);
+Vue.use(Tooltip);
 //Vue.use(Breadcrumb);
 //Vue.use(BreadcrumbItem);
 Vue.use(Form);
@@ -127,7 +127,7 @@ Vue.use(Alert);
 Vue.use(Icon);
 Vue.use(Row);
 Vue.use(Col);
-//Vue.use(Upload);
+Vue.use(Upload);
 //Vue.use(Progress);
 //Vue.use(Spinner);
 //Vue.use(Badge);
@@ -165,6 +165,6 @@ Vue.use(Drawer);
 //Vue.prototype.$msgbox = MessageBox;
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$confirm = MessageBox.confirm;
-//Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$prompt = MessageBox.prompt;
 //Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
