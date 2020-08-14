@@ -18,7 +18,7 @@
             <div class="menu">
                 <el-pagination background layout="prev, pager, next" :pager-count="15" :total="articles.total"
                                @current-change="handlePageChange"/>
-                <el-button type="danger" size="mini" @click="deleteArticles" :disabled="disabled">删除</el-button>
+                <el-button type="danger" size="mini" @click="deleteArticle" :disabled="disabled">删除</el-button>
             </div>
         </div>
         <div v-show="formVisible">
@@ -45,7 +45,6 @@
                 </el-form-item>
             </el-form>
         </div>
-
     </div>
 </template>
 <script>
@@ -118,24 +117,25 @@ export default {
             })
         },
         editArticle(row) {
-            this.getCategories()
+            if (this.categories.length === 0) {
+                this.getCategories()
+            }
             this.getArticle(row.id)
             this.formVisible = true
         },
-        deleteArticles() {
-            this.$confirm("此操作会永久删除这些文章及其评论, 是否继续?")
-                .then(() => {
-                    const ids = [];
-                    this.$refs.multipleTable.selection.forEach(item => {
-                        ids.push(item.id)
-                    })
-                    this.$axios.delete('article', {data: ids}).then(response => {
-                        if (response && response.status === "success") {
-                            this.getArticles(this.currentPage)
-                            this.$message.success(response.message)
-                        }
-                    })
+        deleteArticle() {
+            this.$confirm("此操作会永久删除这些文章及其所有评论, 是否继续?").then(() => {
+                let ids = [];
+                this.$refs.multipleTable.selection.forEach(item => {
+                    ids.push(item.id)
                 })
+                this.$axios.delete('article', {data: ids}).then(response => {
+                    if (response && response.status === "success") {
+                        this.getArticles(this.currentPage)
+                        this.$message.success(response.message)
+                    }
+                })
+            })
         },
         onSubmit(article) {
             this.$refs[article].validate((valid) => {

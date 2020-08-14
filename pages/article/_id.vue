@@ -24,7 +24,7 @@
             <el-form ref="form">
                 <el-form-item>
                     <el-input type="textarea" v-model="content" :autosize="{minRows: 2, maxRows: 10}"
-                              placeholder="请输入内容" minlength="5" maxlength="200" show-word-limit/>
+                              placeholder="请输入内容" minlength="5" maxlength="500" show-word-limit/>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" size="small" :loading="load" @click="onSubmit()">提交

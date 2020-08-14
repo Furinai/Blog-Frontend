@@ -2,14 +2,13 @@
     <el-form :model="article" :rules="rules" :ref="article">
         <el-form-item prop="category">
             <el-select v-model="article.category" value-key="id" placeholder="请选择或搜索分类" filterable>
-                <el-option v-for="category in categories" :key="category.id" :label="category.name" :value="category">
-                </el-option>
+                <el-option v-for="category in categories" :key="category.id" :label="category.name" :value="category"/>
             </el-select>
         </el-form-item>
         <el-form-item prop="title">
             <el-input type="text" v-model="article.title" placeholder="标题" maxlength="60" show-word-limit/>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="synopsis">
             <el-input type="textarea" v-model="article.synopsis" :autosize="{minRows: 3, maxRows: 6}"
                       placeholder="摘要" minlength="10" maxlength="300" show-word-limit/>
         </el-form-item>
@@ -57,6 +56,12 @@ export default {
                         message: '请输入标题'
                     }
                 ],
+                synopsis: [
+                    {
+                        required: true,
+                        message: '请输入摘要'
+                    }
+                ],
                 content: [
                     {
                         required: true,
@@ -86,6 +91,7 @@ export default {
                     this.$axios.post('article', article).then(response => {
                         this.load = false
                         if (response && response.status === 'success') {
+                            this.$refs[article].resetFields()
                             this.$message.success(response.message)
                         }
                     });
