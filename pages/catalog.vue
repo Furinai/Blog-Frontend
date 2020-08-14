@@ -41,11 +41,6 @@ export default {
     margin: 5px;
 }
 
-.icon {
-    width: 32px;
-    height: 32px;
-}
-
 .name {
     color: #222;
     line-height: 2;

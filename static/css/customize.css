@@ -50,6 +50,11 @@ ul {
     margin-left: 20px;
 }
 
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
 .menu {
     display: flex;
     margin: 20px auto;
@@ -69,9 +74,25 @@ ul {
     margin-left: 10px;
 }
 
+.el-col .el-upload-dragger {
+    height: 200px;
+    width: 200px;
+    margin-top: 25px;
+}
+
+.icon-preview {
+    width: 200px;
+    height: 200px;
+    display: block;
+}
+
 .el-dialog {
     max-width: 360px;
     border-radius: 5px;
+}
+
+.el-tooltip__popper {
+    max-width: 40%;
 }
 
 .el-message-box {
