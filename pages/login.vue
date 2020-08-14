@@ -15,6 +15,11 @@ export default {
     layout: 'blog',
     components: {
         Login
+    },
+    head() {
+        return {
+            title: '登录'
+        }
     }
 }
 </script>
