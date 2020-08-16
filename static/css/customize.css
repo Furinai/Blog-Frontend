@@ -99,6 +99,10 @@ ul {
     width: 360px;
 }
 
+.el-tag + .el-tag {
+    margin-left: 10px;
+}
+
 .button-long {
     width: 100%;
 }
