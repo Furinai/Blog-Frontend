@@ -45,29 +45,34 @@ export default {
                     {
                         type: 'email',
                         required: true,
-                        message: '请输入正确的邮箱'
+                        message: '请输入正确的邮箱',
+                        trigger: 'blur'
                     }
                 ],
                 username: [
                     {
                         required: true,
-                        message: '请输入用户名'
+                        message: '请输入用户名',
+                        trigger: 'blur'
                     },
                     {
                         min: 2,
                         max: 10,
-                        message: '长度在2到10个字符'
+                        message: '长度在2到10个字符',
+                        trigger: 'blur'
                     }
                 ],
                 password: [
                     {
                         required: true,
-                        message: '请输入密码'
+                        message: '请输入密码',
+                        trigger: 'blur'
                     },
                     {
                         min: 6,
                         max: 20,
                         message: '长度在6到20个字符',
+                        trigger: 'blur'
                     }
                 ]
             },
@@ -80,11 +85,11 @@ export default {
                 if (valid) {
                     this.load = true
                     this.$axios.post('register', user).then(response => {
-                        this.load = false
-                        if (response && response.status === 'success') {
+                        if (response.status === 'success') {
                             this.$router.push({name: 'index'})
                             this.$message.success(response.message)
                         }
+                        this.load = false
                     })
                 }
             });

@@ -75,7 +75,7 @@ export default {
                     }
                 }
             ).then(response => {
-                if (response && response.status === 'success') {
+                if (response.status === 'success') {
                     success(response.data)
                 } else {
                     failure(response.message)

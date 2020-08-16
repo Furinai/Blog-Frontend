@@ -40,13 +40,15 @@ export default {
                 username: [
                     {
                         required: true,
-                        message: '请输入用户名'
+                        message: '请输入用户名',
+                        trigger: 'blur'
                     }
                 ],
                 password: [
                     {
                         required: true,
-                        message: '请输入密码'
+                        message: '请输入密码',
+                        trigger: 'blur'
                     }
                 ]
             },
@@ -62,11 +64,11 @@ export default {
                 if (valid) {
                     this.load = true
                     this.$auth.login({data: qs.stringify(user)}).then(response => {
-                        this.load = false
-                        if (response && response.status === 'success') {
+                        if (response.status === 'success') {
                             this.$emit('update:LoginDialog', false)
                             this.$message.success(response.message)
                         }
+                        this.load = false
                     })
                 }
             });

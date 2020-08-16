@@ -53,19 +53,22 @@ export default {
                 title: [
                     {
                         required: true,
-                        message: '请输入标题'
+                        message: '请输入标题',
+                        trigger: 'blur'
                     }
                 ],
                 synopsis: [
                     {
                         required: true,
-                        message: '请输入摘要'
+                        message: '请输入摘要',
+                        trigger: 'blur'
                     }
                 ],
                 content: [
                     {
                         required: true,
-                        message: '请输入内容'
+                        message: '请输入内容',
+                        trigger: 'blur'
                     }
                 ]
             },
@@ -79,7 +82,7 @@ export default {
     methods: {
         getCategories() {
             this.$axios.get('categories').then(response => {
-                if (response && response.status === "success") {
+                if (response.status === "success") {
                     this.categories = response.data
                 }
             })
@@ -89,11 +92,11 @@ export default {
                 if (valid) {
                     this.load = true
                     this.$axios.post('article', article).then(response => {
-                        this.load = false
-                        if (response && response.status === 'success') {
+                        if (response.status === 'success') {
                             this.$refs[article].resetFields()
                             this.$message.success(response.message)
                         }
+                        this.load = false
                     });
                 }
             });

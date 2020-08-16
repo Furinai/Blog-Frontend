@@ -34,7 +34,7 @@ export default {
             comment: {},
             comments: {},
             disabled: true,
-            currentPage: 0
+            currentPage: 1
         }
     },
     created() {
@@ -43,7 +43,7 @@ export default {
     methods: {
         getComments(pageNum) {
             this.$axios.get('comments', {params: {pageNum}}).then(response => {
-                if (response && response.status === "success") {
+                if (response.status === "success") {
                     this.comments = response.data
                 }
             })
@@ -56,7 +56,7 @@ export default {
             }).then(({value}) => {
                 row.content = value
                 this.$axios.put('comment', row).then(response => {
-                    if (response && response.status === 'success') {
+                    if (response.status === 'success') {
                         this.$message.success(response.message)
                     }
                 });
@@ -64,13 +64,13 @@ export default {
             });
         },
         deleteComment() {
-            this.$confirm("此操作会永久删除这些评论, 是否继续?").then(() => {
+            this.$confirm("确定要删除这些评论？").then(() => {
                 let ids = [];
                 this.$refs.multipleTable.selection.forEach(item => {
                     ids.push(item.id)
                 })
                 this.$axios.delete('comment', {data: ids}).then(response => {
-                    if (response && response.status === "success") {
+                    if (response.status === "success") {
                         this.getComments(this.currentPage)
                         this.$message.success(response.message)
                     }

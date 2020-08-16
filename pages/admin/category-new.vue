@@ -9,7 +9,6 @@
         </el-col>
         <el-col :span="12">
             <el-form label-position="top" :model="category" :rules="rules" :ref="category">
-                <el-input type="hidden" v-model="category.icon"/>
                 <el-form-item label="名称" prop="name">
                     <el-input type="text" v-model="category.name" maxlength="6" show-word-limit/>
                 </el-form-item>
@@ -45,16 +44,17 @@ export default {
                 name: [
                     {
                         required: true,
-                        message: '请输入名称'
+                        message: '请输入名称',
+                        trigger: 'blur'
                     }
                 ],
                 sequence: [
                     {
-                        required: true, message: '请输入次序'
+                        required: true, message: '请输入次序', trigger: 'blur'
                     },
 
                     {
-                        type: 'number', message: '次序必须为数字值'
+                        type: 'number', message: '次序必须为数字值', trigger: 'blur'
                     }
                 ]
             },
@@ -65,30 +65,30 @@ export default {
         onSubmit(category) {
             this.$refs[category].validate((valid) => {
                 if (valid) {
-                    this.load = true
                     if (this.icon === '') {
                         this.$message.error("请上传图标！")
                     } else {
                         this.$refs.upload.submit()
                     }
-                    this.load = false
                 }
             });
         },
         uploadIcon(params) {
+            this.load = true
             let formData = new FormData();
             formData.append('file', params.file)
             let headers = {'Content-Type': 'multipart/form-data'}
             this.$axios.post('icon', formData, headers).then(response => {
-                if (response && response.status === 'success') {
+                if (response.status === 'success') {
                     let category = this.category
                     category.icon = response.data
                     this.$axios.post('category', category).then(response => {
-                        if (response && response.status === 'success') {
+                        if (response.status === 'success') {
                             this.icon = ''
                             this.$refs[category].resetFields()
                             this.$message.success(response.message)
                         }
+                        this.load = false
                     });
                 }
             })

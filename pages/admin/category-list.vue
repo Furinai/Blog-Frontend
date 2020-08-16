@@ -30,7 +30,6 @@
                 </el-col>
                 <el-col :span="12">
                     <el-form label-position="top" :model="category" :rules="rules" :ref="category">
-                        <el-input type="hidden" v-model="category.icon"/>
                         <el-form-item label="名称" prop="name">
                             <el-input type="text" v-model="category.name" maxlength="20" show-word-limit/>
                         </el-form-item>
@@ -66,16 +65,17 @@ export default {
                 name: [
                     {
                         required: true,
-                        message: '请输入名称'
+                        message: '请输入名称',
+                        trigger: 'blur'
                     }
                 ],
                 sequence: [
                     {
-                        required: true, message: '请输入次序'
+                        required: true, message: '请输入次序', trigger: 'blur'
                     },
 
                     {
-                        type: 'number', message: '次序必须为数字值'
+                        type: 'number', message: '次序必须为数字值', trigger: 'blur'
                     }
                 ]
             },
@@ -88,7 +88,7 @@ export default {
     methods: {
         getCategories() {
             this.$axios.get('categories').then(response => {
-                if (response && response.status === "success") {
+                if (response.status === "success") {
                     this.categories = response.data
                 }
             })
@@ -99,11 +99,11 @@ export default {
             this.formVisible = true
         },
         deleteCategory(index, row) {
-            this.$confirm("此操作会永久删除该分类及其所有文章, 是否继续?")
+            this.$confirm("确定要删除这些分类及其所有文章？")
                 .then(() => {
                     let id = row.id
                     this.$axios.delete('category/' + id).then(response => {
-                        if (response && response.status === "success") {
+                        if (response.status === "success") {
                             this.$message.success(response.message)
                             this.categories.splice(index, 1)
                         }
@@ -119,7 +119,6 @@ export default {
                     } else {
                         this.$refs.upload.submit()
                     }
-                    this.load = false
                 }
             });
         },
@@ -128,7 +127,7 @@ export default {
             formData.append('file', params.file)
             let headers = {'Content-Type': 'multipart/form-data'}
             this.$axios.post('icon', formData, headers).then(response => {
-                if (response && response.status === 'success') {
+                if (response.status === 'success') {
                     this.category.icon = response.data
                     this.updateCategory()
                 }
@@ -136,11 +135,12 @@ export default {
         },
         updateCategory() {
             this.$axios.put('category', this.category).then(response => {
-                if (response && response.status === 'success') {
+                if (response.status === 'success') {
                     this.getCategories()
                     this.formVisible = false
                     this.$message.success(response.message)
                 }
+                this.load = false
             });
         },
         handleIconChange(file) {

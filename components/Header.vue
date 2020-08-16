@@ -112,7 +112,7 @@ export default {
         async logout() {
             this.$confirm('确定注销？', '提示', {type: 'warning'}).then(() => {
                 this.$auth.logout().then(response => {
-                    if (response && response.status === 'success') {
+                    if (response.status === 'success') {
                         this.$message.success(response.message)
                     }
                 })

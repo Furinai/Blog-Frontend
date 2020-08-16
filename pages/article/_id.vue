@@ -97,12 +97,12 @@ export default {
                 let articleId = this.article.id
                 let content = this.content
                 this.$axios.post('comment', {articleId, content}).then(response => {
-                    this.load = false
-                    if (response && response.status === "success") {
+                    if (response.status === "success") {
                         this.content = null
                         this.comments = response.data
                         this.$message.success(response.message)
                     }
+                    this.load = false
                 })
             }
         }

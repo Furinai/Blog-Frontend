@@ -66,7 +66,7 @@ export default {
             articles: {},
             categories: [],
             disabled: true,
-            currentPage: 0,
+            currentPage: 1,
             formVisible: false,
             rules: {
                 category: [
@@ -78,13 +78,15 @@ export default {
                 title: [
                     {
                         required: true,
-                        message: '请输入标题'
+                        message: '请输入标题',
+                        trigger: 'blur'
                     }
                 ],
                 content: [
                     {
                         required: true,
-                        message: '请输入内容'
+                        message: '请输入内容',
+                        trigger: 'blur'
                     }
                 ]
             },
@@ -97,21 +99,21 @@ export default {
     methods: {
         getArticle(id) {
             this.$axios.get('article/' + id).then(response => {
-                if (response && response.status === "success") {
+                if (response.status === "success") {
                     this.article = response.data
                 }
             })
         },
         getArticles(pageNum) {
             this.$axios.get('articles', {params: {pageNum}}).then(response => {
-                if (response && response.status === "success") {
+                if (response.status === "success") {
                     this.articles = response.data
                 }
             })
         },
         getCategories() {
             this.$axios.get('categories').then(response => {
-                if (response && response.status === "success") {
+                if (response.status === "success") {
                     this.categories = response.data
                 }
             })
@@ -124,13 +126,13 @@ export default {
             this.formVisible = true
         },
         deleteArticle() {
-            this.$confirm("此操作会永久删除这些文章及其所有评论, 是否继续?").then(() => {
+            this.$confirm("确定要删除这些文章及其所有评论？").then(() => {
                 let ids = [];
                 this.$refs.multipleTable.selection.forEach(item => {
                     ids.push(item.id)
                 })
                 this.$axios.delete('article', {data: ids}).then(response => {
-                    if (response && response.status === "success") {
+                    if (response.status === "success") {
                         this.getArticles(this.currentPage)
                         this.$message.success(response.message)
                     }
@@ -142,12 +144,12 @@ export default {
                 if (valid) {
                     this.load = true
                     this.$axios.put('article', article).then(response => {
-                        this.load = false
-                        if (response && response.status === 'success') {
+                        if (response.status === 'success') {
                             this.getArticles(this.currentPage)
                             this.formVisible = false
                             this.$message.success(response.message)
                         }
+                        this.load = false
                     });
                 }
             });
