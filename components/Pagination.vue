@@ -66,7 +66,6 @@ export default {
 
 <style scoped>
 .pagination {
-    margin-top: 10px;
     text-align: center;
 }
 

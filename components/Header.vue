@@ -28,9 +28,9 @@
                     </a>
                 </li>
                 <li class="nav nav-xs">
-                    <a href="javascript:">
+                    <nuxt-link :to="{name: 'search'}">
                         <i class="el-icon-search"/>搜索
-                    </a>
+                    </nuxt-link>
                 </li>
                 <li class="nav nav-xs">
                     <nuxt-link :to="{name: 'about'}">
@@ -69,9 +69,9 @@
                         </a>
                     </li>
                     <li class="nav nav-sm">
-                        <a href="javascript:">
+                        <nuxt-link :to="{name: 'search'}">
                             <i class="el-icon-search"/>搜索
-                        </a>
+                        </nuxt-link>
                     </li>
                     <li class="nav nav-sm">
                         <nuxt-link :to="{name: 'about'}">
