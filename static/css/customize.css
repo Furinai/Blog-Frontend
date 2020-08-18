@@ -324,6 +324,12 @@ ul {
     margin-top: 25px;
 }
 
+.text-between {
+    display: flex;
+    line-height: 2.8;
+    justify-content: space-between;
+}
+
 .drawer-switch {
     position: absolute;
     background: none;

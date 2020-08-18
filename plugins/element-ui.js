@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {
     Pagination,
-    Dialog,
+    //Dialog,
     //Autocomplete,
     //Dropdown,
     //DropdownMenu,
@@ -70,7 +70,7 @@ import {
     //TimelineItem,
     Link,
     Divider,
-    Image,
+    //Image,
     //Calendar,
     //Backtop,
     //PageHeader,
@@ -84,7 +84,7 @@ import {
 } from "element-ui";
 
 Vue.use(Pagination);
-Vue.use(Dialog);
+//Vue.use(Dialog);
 //Vue.use(Autocomplete);
 //Vue.use(Dropdown);
 //Vue.use(DropdownMenu);
@@ -153,7 +153,7 @@ Vue.use(Footer);
 //Vue.use(TimelineItem);
 Vue.use(Link);
 Vue.use(Divider);
-Vue.use(Image);
+//Vue.use(Image);
 //Vue.use(Calendar);
 //Vue.use(Backtop);
 //Vue.use(PageHeader);
@@ -163,8 +163,8 @@ Vue.use(Drawer);
 //Vue.use(Loading.directive);
 //Vue.prototype.$loading = Loading.service;
 //Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$message = Message;
 Vue.prototype.$alert = MessageBox.alert;
 Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 //Vue.prototype.$notify = Notification;
-Vue.prototype.$message = Message;
