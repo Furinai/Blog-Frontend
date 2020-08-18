@@ -82,7 +82,7 @@ export default {
     methods: {
         getCategories() {
             this.$axios.get('categories').then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.categories = response.data
                 }
             })

@@ -43,7 +43,7 @@ export default {
     methods: {
         getComments(pageNum) {
             this.$axios.get('comments', {params: {pageNum}}).then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.comments = response.data
                 }
             })
@@ -70,7 +70,7 @@ export default {
                     ids.push(item.id)
                 })
                 this.$axios.delete('comment', {data: ids}).then(response => {
-                    if (response.status === "success") {
+                    if (response.status === 'success') {
                         this.getComments(this.currentPage)
                         this.$message.success(response.message)
                     }

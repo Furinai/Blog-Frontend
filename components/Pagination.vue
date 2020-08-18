@@ -2,29 +2,29 @@
     <div v-if="pages > 1" class="pagination">
         <div class="el-pagination is-background">
             <ul class="el-pager">
-                <li class="number">
+                <li>
                     <i v-if="pageNum === 1" class="el-icon el-icon-arrow-left"></i>
                     <nuxt-link v-else :to="{...route, query: {page: prePage}}">
                         <i class="el-icon el-icon-arrow-left"></i>
                     </nuxt-link>
                 </li>
-                <li v-if="navigateFirstPage > 1" class="number">
+                <li v-if="navigateFirstPage > 1">
                     <nuxt-link :to="{...route, query: {page: 1}}">1</nuxt-link>
                 </li>
                 <li v-if="navigateFirstPage > 2" class="el-icon el-icon-more"></li>
-                <li v-for="currentPage in pageNums" class="number"
+                <li v-for="currentPage in pageNums"
                     :class="{active: currentPage === pageNum}">
                     <nuxt-link :to="{...route, query: {page: currentPage}}">
                         {{ currentPage }}
                     </nuxt-link>
                 </li>
                 <li v-if="navigateLastPage < pages - 1" class="el-icon el-icon-more"></li>
-                <li v-if="navigateLastPage < pages" class="number">
+                <li v-if="navigateLastPage < pages">
                     <nuxt-link :to="{...route, query: {page: pages}}">
                         {{ pages }}
                     </nuxt-link>
                 </li>
-                <li class="number">
+                <li>
                     <i v-if="pageNum === pages" class="el-icon el-icon-arrow-right"></i>
                     <nuxt-link v-else :to="{...route, query: {page: nextPage}}">
                         <i class="el-icon el-icon-arrow-right"></i>
@@ -63,25 +63,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.pagination {
-    text-align: center;
-}
-
-.number i {
-    margin-right: 0;
-}
-
-.el-pagination {
-    padding: 0;
-}
-
-.el-pagination li.active {
-    background-color: #409EFF;
-}
-
-.el-pagination li.active a {
-    color: #ffffff;
-}
-</style>

@@ -1,13 +1,11 @@
 <template>
-    <el-row type="flex" justify="center">
-        <el-col :span="6">
-            <el-upload ref="upload" action="" :limit="1" :show-file-list="false" :auto-upload="false"
-                       :on-change="handleIconChange" :http-request="uploadIcon" drag>
-                <img v-if="icon" :src="icon" class="icon-preview">
-                <i v-else class="el-icon-upload"></i>
-            </el-upload>
-        </el-col>
-        <el-col :span="12">
+    <div class="media">
+        <el-upload ref="upload" action="" :limit="1" :show-file-list="false" :auto-upload="false"
+                   :on-change="handleIconChange" :http-request="uploadIcon" drag>
+            <img v-if="icon" :src="icon" class="icon-preview">
+            <i v-else class="el-icon-upload"></i>
+        </el-upload>
+        <div class="media-body">
             <el-form label-position="top" :model="category" :rules="rules" :ref="category">
                 <el-form-item label="名称" prop="name">
                     <el-input type="text" v-model="category.name" maxlength="6" show-word-limit/>
@@ -19,8 +17,8 @@
                     <el-button type="primary" size="small" @click="onSubmit(category)" :loading="load">提交</el-button>
                 </el-form-item>
             </el-form>
-        </el-col>
-    </el-row>
+        </div>
+    </div>
 </template>
 
 <script>

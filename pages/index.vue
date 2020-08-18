@@ -34,10 +34,8 @@ export default {
     },
     watchQuery: true,
     async asyncData({app, query}) {
-        let url = 'articles'
-        if (query.page !== undefined)
-            url = url + '?pageNum=' + query.page
-        let response = await app.$axios.get(url)
+        let pageNum = query.page
+        let response = await app.$axios.get('articles', {params: {pageNum}})
         return {articles: response.data};
     }
 }

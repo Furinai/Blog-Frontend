@@ -99,21 +99,21 @@ export default {
     methods: {
         getArticle(id) {
             this.$axios.get('article/' + id).then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.article = response.data
                 }
             })
         },
         getArticles(pageNum) {
             this.$axios.get('articles', {params: {pageNum}}).then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.articles = response.data
                 }
             })
         },
         getCategories() {
             this.$axios.get('categories').then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.categories = response.data
                 }
             })
@@ -132,7 +132,7 @@ export default {
                     ids.push(item.id)
                 })
                 this.$axios.delete('article', {data: ids}).then(response => {
-                    if (response.status === "success") {
+                    if (response.status === 'success') {
                         this.getArticles(this.currentPage)
                         this.$message.success(response.message)
                     }

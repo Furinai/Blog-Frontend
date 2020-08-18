@@ -1,5 +1,5 @@
 <template>
-    <div class="aside">
+    <div id="aside">
         <el-menu background-color="#304156" text-color="#BFCBD9"
                  active-text-color="#409EFF" router unique-opened>
             <el-menu-item index="1" :route="{name: 'admin'}">
@@ -57,16 +57,6 @@
 
 <script>
 export default {
-    name: "Aside"
+    name: 'Aside'
 }
 </script>
-
-<style scoped>
-.aside {
-    height: 100%;
-}
-
-.el-menu {
-    height: 100%;
-}
-</style>

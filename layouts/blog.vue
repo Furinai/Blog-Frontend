@@ -35,26 +35,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.el-header {
-    border-bottom: 1px solid #eee;
-    background-color: #fff;
-    line-height: 50px;
-    position: fixed;
-    z-index: 1020;
-    width: 100%;
-}
-
-.el-main {
-    margin-top: 50px;
-}
-
-.el-footer {
-    border-top: 1px solid #eee;
-}
-
-.el-container {
-    min-height: 100%;
-}
-</style>

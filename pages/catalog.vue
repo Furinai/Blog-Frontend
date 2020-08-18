@@ -3,10 +3,10 @@
         <el-col v-for="category in categories" :key="category.id" :xs="12" :sm="6">
             <el-card class="category" shadow="never">
                 <div class="media">
-                    <img :src="category.icon" class="icon"/>
+                    <img :src="category.icon" class="category-icon"/>
                     <div class="media-body">
                         <router-link :to="{name: 'category-id', params: {id: category.id}}">
-                            <div class="name">{{ category.name }}</div>
+                            <div class="category-name">{{ category.name }}</div>
                         </router-link>
                     </div>
                 </div>
@@ -35,18 +35,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.category {
-    margin: 5px;
-}
-
-.name {
-    color: #222;
-    line-height: 2;
-}
-
-.el-row {
-    flex-wrap: wrap;
-}
-</style>

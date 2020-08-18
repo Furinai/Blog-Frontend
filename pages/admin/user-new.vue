@@ -91,7 +91,7 @@ export default {
     methods: {
         getRoles() {
             this.$axios.get('roles').then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.roles = response.data
                 }
             })

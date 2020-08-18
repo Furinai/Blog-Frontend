@@ -35,13 +35,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.about > li {
-    margin-bottom: 20px;
-}
-
-.el-tag {
-    margin: 5px;
-}
-</style>

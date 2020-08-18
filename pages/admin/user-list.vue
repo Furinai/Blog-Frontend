@@ -114,14 +114,14 @@ export default {
     methods: {
         getUsers(pageNum) {
             this.$axios.get('users', {params: {pageNum}}).then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.users = response.data
                 }
             })
         },
         getRoles() {
             this.$axios.get('roles').then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.roles = response.data
                 }
             })
@@ -140,7 +140,7 @@ export default {
                     ids.push(item.id)
                 })
                 this.$axios.delete('user', {data: ids}).then(response => {
-                    if (response.status === "success") {
+                    if (response.status === 'success') {
                         this.getUsers(this.currentPage)
                         this.$message.success(response.message)
                     }
@@ -152,7 +152,7 @@ export default {
                 if (valid) {
                     this.load = true
                     this.$axios.put('user', user).then(response => {
-                        if (response.status === "success") {
+                        if (response.status === 'success') {
                             this.getUsers(this.currentPage)
                             this.formVisible = false
                             this.$message.success(response.message)

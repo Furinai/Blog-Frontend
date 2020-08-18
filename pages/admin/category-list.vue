@@ -5,7 +5,7 @@
                 <el-table-column prop="id" label="ID" align="center" width="200"/>
                 <el-table-column prop="icon" label="图标" align="center" width="200">
                     <template slot-scope="scope">
-                        <img :src="scope.row.icon" class="icon"/>
+                        <img :src="scope.row.icon" class="category-icon"/>
                     </template>
                 </el-table-column>
                 <el-table-column prop="name" label="名称" align="center"/>
@@ -21,14 +21,12 @@
             </el-table>
         </div>
         <div v-show="formVisible">
-            <el-row type="flex" justify="center">
-                <el-col :span="6">
-                    <el-upload ref="upload" action="" :limit="1" :show-file-list="false" :auto-upload="false"
-                               :on-change="handleIconChange" :http-request="uploadIcon" drag>
-                        <img :src="icon" class="icon-preview">
-                    </el-upload>
-                </el-col>
-                <el-col :span="12">
+            <div class="media">
+                <el-upload ref="upload" action="" :limit="1" :show-file-list="false" :auto-upload="false"
+                           :on-change="handleIconChange" :http-request="uploadIcon" drag>
+                    <img :src="icon" class="icon-preview">
+                </el-upload>
+                <div class="media-body">
                     <el-form label-position="top" :model="category" :rules="rules" :ref="category">
                         <el-form-item label="名称" prop="name">
                             <el-input type="text" v-model="category.name" maxlength="20" show-word-limit/>
@@ -42,8 +40,8 @@
                             </el-button>
                         </el-form-item>
                     </el-form>
-                </el-col>
-            </el-row>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -57,7 +55,7 @@ export default {
     },
     data() {
         return {
-            icon: "",
+            icon: '',
             category: {},
             categories: [],
             formVisible: false,
@@ -88,7 +86,7 @@ export default {
     methods: {
         getCategories() {
             this.$axios.get('categories').then(response => {
-                if (response.status === "success") {
+                if (response.status === 'success') {
                     this.categories = response.data
                 }
             })
@@ -103,7 +101,7 @@ export default {
                 .then(() => {
                     let id = row.id
                     this.$axios.delete('category/' + id).then(response => {
-                        if (response.status === "success") {
+                        if (response.status === 'success') {
                             this.$message.success(response.message)
                             this.categories.splice(index, 1)
                         }

@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div id="footer">
         <div class="copyright">
             Copyright Linter. All Rights Reserved
         </div>
@@ -14,20 +14,3 @@ export default {
     name: 'Footer'
 }
 </script>
-
-<style scoped>
-.footer {
-    text-align: center;
-    padding-top: 20px;
-    line-height: 1.5;
-}
-
-.copyright {
-    font-size: 14px;
-    color: #444;
-}
-
-.el-link {
-    font-size: 14px;
-}
-</style>

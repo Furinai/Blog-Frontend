@@ -1,27 +1,25 @@
 <template>
-    <div class="login">
-        <el-form :model="user" :rules="rules" :ref="user">
-            <el-form-item prop="username">
-                <el-input type="text" v-model="user.username" placeholder="用户名"/>
-            </el-form-item>
-            <el-form-item prop="password">
-                <el-input type="password" v-model="user.password" placeholder="密码"
-                          @keyup.enter.native="onSubmit(user)"/>
-            </el-form-item>
-            <div class="menu">
-                <el-checkbox v-model="user.remember">保持登录</el-checkbox>
-                <nuxt-link class="el-link el-link--primary" :to="{name: 'register'}">
-                    注册账号
-                </nuxt-link>
-            </div>
-            <el-form-item>
-                <el-button class="button-long" type="primary"
-                           @click="onSubmit(user)" :loading="load" round>
-                    登录
-                </el-button>
-            </el-form-item>
-        </el-form>
-    </div>
+    <el-form :model="user" :rules="rules" :ref="user">
+        <el-form-item prop="username">
+            <el-input type="text" v-model="user.username" placeholder="用户名"/>
+        </el-form-item>
+        <el-form-item prop="password">
+            <el-input type="password" v-model="user.password" placeholder="密码"
+                      @keyup.enter.native="onSubmit(user)"/>
+        </el-form-item>
+        <div class="menu">
+            <el-checkbox v-model="user.remember">保持登录</el-checkbox>
+            <nuxt-link class="el-link el-link--primary" :to="{name: 'register'}">
+                注册账号
+            </nuxt-link>
+        </div>
+        <el-form-item>
+            <el-button class="button-long" type="primary"
+                       @click="onSubmit(user)" :loading="load" round>
+                登录
+            </el-button>
+        </el-form-item>
+    </el-form>
 </template>
 
 <script>
