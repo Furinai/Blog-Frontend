@@ -5,7 +5,7 @@ export default {
         title: 'Linter',
         titleTemplate: '%s | Linter',
         htmlAttrs: {
-            lang: 'zh-Hans-CN',
+            lang: 'zh-CN',
         },
         meta: [
             {charset: 'utf-8'}
@@ -15,8 +15,7 @@ export default {
         ]
     },
     css: [
-        '~static/css/customize.css',
-        '~static/css/normalize.css',
+        '~static/css/customize.css'
     ],
     plugins: [
         '~/plugins/element-ui',
@@ -29,6 +28,7 @@ export default {
         '@nuxtjs/auth'
     ],
     build: {
+        extractCSS: true,
         babel: {
             plugins: [
                 [
