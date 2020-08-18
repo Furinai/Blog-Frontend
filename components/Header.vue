@@ -19,9 +19,9 @@
                     <a v-if="this.$auth.loggedIn" href="javascript:" @click="logout">
                         <i class="el-icon-user"/>注销
                     </a>
-                    <a v-else href="javascript:" @click="LoginDialog=true">
+                    <nuxt-link v-else :to="{name: 'login'}">
                         <i class="el-icon-user"/>登录
-                    </a>
+                    </nuxt-link>
                     <nuxt-link :to="{name: 'search'}">
                         <i class="el-icon-search"/>搜索
                     </nuxt-link>
@@ -52,9 +52,9 @@
                         </a>
                     </li>
                     <li v-else class="nav">
-                        <a href="javascript:" @click="LoginDialog=true">
+                        <nuxt-link :to="{name: 'login'}">
                             <i class="el-icon-user"/>登录
-                        </a>
+                        </nuxt-link>
                     </li>
                     <li class="nav">
                         <nuxt-link :to="{name: 'search'}">
@@ -75,25 +75,15 @@
                 <i class="el-icon-s-operation"/>
             </button>
         </el-col>
-        <el-dialog title="登录" :visible.sync="LoginDialog" :show-close=false
-                   width="95%" :center=true :append-to-body=true top="25vh">
-            <Login v-bind:LoginDialog.sync="LoginDialog"/>
-        </el-dialog>
     </div>
 </template>
 
 <script scoped>
-import Login from './Login';
-
 export default {
     name: 'Header',
-    components: {
-        Login
-    },
     data() {
         return {
-            MenuDrawer: false,
-            LoginDialog: false
+            MenuDrawer: false
         }
     },
     methods: {
@@ -110,7 +100,6 @@ export default {
     watch: {
         '$route': function () {
             this.MenuDrawer = false
-            this.LoginDialog = false
         }
     }
 }
