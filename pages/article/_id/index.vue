@@ -1,29 +1,32 @@
 <template>
     <div id="article">
-        <div class="title">{{ article.title }}</div>
-        <ul class="info">
+        <div class="article-title">{{ article.title }}</div>
+        <ul class="article-info">
             <li><i class="el-icon-time"/>{{ article.createdTime }}</li>
+            <el-divider direction="vertical"/>
             <li><i class="el-icon-view"/>{{ article.viewCount }}</li>
+            <el-divider direction="vertical"/>
             <li><i class="el-icon-chat-square"/>{{ article.commentCount }}</li>
+            <el-divider direction="vertical"/>
             <li><i class="el-icon-collection-tag"/>{{ article.category.name }}</li>
         </ul>
-        <div class="content" v-html="article.content">
+        <div class="article-content" v-html="article.content">
         </div>
-        <div class="count">共 {{ comments.total }} 条评论</div>
+        <div class="comment-count">共 {{ comments.total }} 条评论</div>
         <ul>
             <li class="comment" v-for="comment in comments.list" :key="comment.id">
                 <div class="media">
-                    <div class="username">{{ comment.user.username }}</div>
-                    <div class="time">{{ comment.createdTime }}</div>
+                    <div class="comment-username">{{ comment.user.username }}</div>
+                    <div class="comment-created-time">{{ comment.createdTime }}</div>
                 </div>
-                <div class="content" v-html="comment.content"></div>
+                <div class="comment-content" v-html="comment.content"></div>
             </li>
         </ul>
 
-        <div v-if="this.$auth.loggedIn" class="form">
+        <div v-if="this.$auth.loggedIn" class="comment-form">
             <el-form ref="form">
                 <el-form-item>
-                    <el-input type="textarea" v-model="content" :autosize="{minRows: 2, maxRows: 10}"
+                    <el-input type="textarea" v-model.trim="content" :autosize="{minRows: 2, maxRows: 10}"
                               placeholder="请输入内容" minlength="5" maxlength="500" show-word-limit/>
                 </el-form-item>
                 <el-form-item>
@@ -73,16 +76,18 @@ export default {
             load: false,
         }
     },
-    async asyncData({app, params, query}) {
+    async asyncData({app, params, query, error}) {
+        let articleId = params.id
+        let pageNum = query.page
         let article = await app.$axios.get('article/' + params.id)
-        let url = 'comments?articleId=' + params.id
-        if (query.page !== undefined)
-            url = url + '&pageNum=' + query.page
-        let comments = await app.$axios.get(url)
+        let comments = await app.$axios.get('comments', {params: {articleId, pageNum}})
+        if (article.status === 'error') {
+            error({statusCode: 404})
+        }
         return {
             article: article.data,
             comments: comments.data
-        };
+        }
     },
     mounted() {
         Prism.highlightAll()
@@ -90,14 +95,14 @@ export default {
     watchQuery: true,
     methods: {
         onSubmit() {
-            if (this.content === null || this.content.trim().length < 5) {
+            if (this.content === null || this.content.length < 5) {
                 this.$alert('评论至少5个字', '提交失败')
             } else {
                 this.load = true
                 let articleId = this.article.id
                 let content = this.content
                 this.$axios.post('comment', {articleId, content}).then(response => {
-                    if (response.status === "success") {
+                    if (response.status === 'success') {
                         this.content = null
                         this.comments = response.data
                         this.$message.success(response.message)
@@ -109,59 +114,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.title {
-    color: #000;
-    line-height: 2;
-    font-size: 20px;
-}
-
-.info {
-    color: #666;
-    display: flex;
-    font-size: 12px;
-    margin: 10px 20px 0 0;
-}
-
-.info > li {
-    margin-right: 20px;
-}
-
-.content {
-    color: #333;
-    line-height: 2;
-    margin: 20px 0;
-    word-break: break-word;
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-.count {
-    font-size: 20px;
-    margin: 40px 0 20px;
-}
-
-.comment {
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.username {
-    color: #333;
-}
-
-.time {
-    color: #888;
-    font-size: 14px;
-    line-height: 1.5;
-    margin-left: 10px;
-}
-
-.form {
-    margin-top: 25px;
-}
-</style>

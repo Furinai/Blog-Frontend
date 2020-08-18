@@ -33,12 +33,14 @@ export default {
             title: this.category.name + ' | 分类'
         }
     },
-    async asyncData({app, params, query}) {
+    async asyncData({app, params, query, error}) {
+        let categoryId = params.id
+        let pageNum = query.page
         let category = await app.$axios.get('category/' + params.id)
-        let url = 'articles?categoryId=' + params.id
-        if (query.page !== undefined)
-            url = url + '&pageNum=' + query.page
-        let articles = await app.$axios.get(url)
+        let articles = await app.$axios.get('articles', {params: {categoryId, pageNum}})
+        if (category.status === 'error') {
+            error({statusCode: 404})
+        }
         return {
             category: category.data,
             articles: articles.data
@@ -47,6 +49,3 @@ export default {
     watchQuery: true
 }
 </script>
-
-<style scoped>
-</style>
