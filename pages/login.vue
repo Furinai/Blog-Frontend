@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import qs from 'qs';
 
 export default {
     name: 'login',
@@ -73,7 +72,10 @@ export default {
             this.$refs[user].validate((valid) => {
                 if (valid) {
                     this.load = true
-                    this.$auth.login({data: qs.stringify(user)}).then(response => {
+                    let params = new URLSearchParams()
+                    params.append('username', this.user.username)
+                    params.append('password', this.user.password)
+                    this.$auth.login({params}).then(response => {
                         if (response.status === 'success') {
                             this.$message.success(response.message)
                         }

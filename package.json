@@ -17,7 +17,6 @@
         "element-ui": "^2.15.0",
         "nuxt": "^2.14.12",
         "prismjs": "^1.23.0",
-        "qs": "^6.9.6",
         "tinymce": "^5.6.2"
     },
     "devDependencies": {
