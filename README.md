@@ -17,4 +17,4 @@ $ npm run start
 $ npm run generate
 ```
 
-详情查阅 [Nuxt文档](https://https://zh.nuxtjs.org/)
+详情查阅 [Nuxt文档](https://zh.nuxtjs.org/)
